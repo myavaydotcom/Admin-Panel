@@ -1,0 +1,60 @@
+<nb-layout>
+
+    <nb-layout-header>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3">
+                    <span [ngStyle]="{'cursor':'pointer'}" (click)="sideBar()">
+                        <nb-icon icon="menu" status="primary" *ngIf="sidebar"></nb-icon>
+                        <nb-icon icon="close" status="primary" *ngIf="!sidebar"></nb-icon>
+                    </span>
+                    <span>
+                        <img [src]="profileImage"
+                            class="img-fluid rounded" alt="No Image" width="50px" height="auto">
+                    </span>
+                    <span>{{username}}</span>
+                </div>
+                <div class="col-md-8">
+                </div>
+                <div class="col-md-1">
+                    <button nbButton status="primary" (click)="logOut()">Log-Out</button>
+                </div>
+            </div>
+        </div>
+    </nb-layout-header>
+
+    <nb-sidebar *ngIf="!sidebar">
+        <nb-list>
+            <nb-list-item>
+                <span (click)="user()" [ngStyle]="{'cursor':'pointer'}">
+                    <nb-icon icon="people" status="warning"></nb-icon> Users
+                </span>
+            </nb-list-item>
+            <nb-list-item>
+                <span (click)="country()" [ngStyle]="{'cursor':'pointer'}">
+                    <nb-icon icon="globe" status="primary"></nb-icon> Country
+                </span>
+            </nb-list-item>
+            <nb-list-item>
+                <span (click)="city()" [ngStyle]="{'cursor':'pointer'}">
+                    <nb-icon icon="bar-chart" status="danger"></nb-icon> City
+                </span>
+            </nb-list-item>
+        </nb-list>
+    </nb-sidebar>
+
+    <nb-layout-column>
+        <nb-card *ngIf="openUser">
+            <app-users></app-users>
+        </nb-card>
+
+        <nb-card *ngIf="openCountry">
+            <app-country></app-country>
+        </nb-card>
+
+        <nb-card *ngIf="openCity">
+            <app-city></app-city>
+        </nb-card>
+    </nb-layout-column>
+
+</nb-layout>

@@ -1,0 +1,43 @@
+<nb-layout>
+    <nb-layout-header fixed>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4"></div>
+                <div class="col-lg-6">
+                    <h1>Authentication</h1>
+                </div>
+                <div class="col-lg-2">
+                    <button nbButton status="primary" (click)="goSignUp()">Sign-Up</button>
+                </div>
+            </div>
+        </div>
+    </nb-layout-header>
+
+    <nb-layout-column>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4"></div>
+                <div class="col-lg-4">
+                    <nb-card>
+                        <nb-card-header>Login User</nb-card-header>
+                        <nb-card-body>
+                            <form>
+                                <input type="email" nbInput fullWidth status="primary" placeholder="Enter Email..."
+                                    name="email" [(ngModel)]="email">
+                                <br>
+                                <input type="password" nbInput fullWidth status="primary"
+                                    placeholder="Enter Password..." name="password" [(ngModel)]="password">
+                            </form>
+                        </nb-card-body>
+                        <nb-card-footer>
+                            <button nbButton (click)="onSubmit()">Log-In</button>
+                        </nb-card-footer>
+                    </nb-card>
+                </div>
+                <div class="col-lg-4">
+                </div>
+            </div>
+        </div>
+    </nb-layout-column>
+
+</nb-layout>

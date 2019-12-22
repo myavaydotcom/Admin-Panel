@@ -1,0 +1,51 @@
+<nb-layout>
+    <nb-layout-header fixed>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4"></div>
+                <div class="col-lg-6">
+                    <h1>Authentication</h1>
+                </div>
+                <div class="col-lg-2">
+                    <button nbButton status="primary" (click)="goLogIn()">Log-In</button>
+                </div>
+            </div>
+        </div>
+    </nb-layout-header>
+
+    <nb-layout-column>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4"></div>
+                <div class="col-lg-4">
+                    <nb-card>
+                        <nb-card-header>Create New User</nb-card-header>
+                        <nb-card-body class="example-items-col">
+                            <form>
+                                <input type="text" nbInput fullWidth status="primary" placeholder="Enter Username"
+                                    name="username" [(ngModel)]="username">
+
+                                <input type="email" nbInput fullWidth status="primary" placeholder="Enter Email..."
+                                    name="email" [(ngModel)]="email">
+
+                                <input type="password" nbInput fullWidth status="primary"
+                                    placeholder="Enter Password..." name="password" [(ngModel)]="password">
+
+                                <input type="password" nbInput fullWidth status="primary" placeholder="Confirm Password"
+                                    name="confirmPassword" [(ngModel)]="confirmPassword">
+
+                                <input type="file" #file name="profile" (change)="profileImage(file.value)">
+                            </form>
+                        </nb-card-body>
+                        <nb-card-footer>
+                            <button nbButton (click)="onSubmit()">Sign-Up</button>
+                        </nb-card-footer>
+                    </nb-card>
+                </div>
+                <div class="col-lg-4">
+                </div>
+            </div>
+        </div>
+    </nb-layout-column>
+
+</nb-layout>

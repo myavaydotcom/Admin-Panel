@@ -1,0 +1,74 @@
+<nb-card-body>
+
+    <nb-card>
+        <nb-card-body>
+            <div class="row">
+                <div class="col-md-3">
+                    <input type="text" nbInput fullWidth shape="round" placeholder="Enter name..."
+                        [(ngModel)]="username">
+                </div>
+                <div class="col-md-3">
+                    <input type="email" nbInput fullWidth shape="round" placeholder="Enter email..."
+                        [(ngModel)]="email">
+                </div>
+                <div class="col-md-2">
+                    <input type="number" nbInput fullWidth shape="round" placeholder="Enter age..." [(ngModel)]="age">
+                </div>
+                <div class="col-md-3">
+                    <input type="number" nbInput fullWidth shape="round" placeholder="Enter phone number ...."
+                        [(ngModel)]="phone">
+                </div>
+                <div class="col-md-1">
+                    <span class="btn btn-primary" (click)="add()">
+                        Add
+                    </span>
+                </div>
+            </div>
+        </nb-card-body>
+    </nb-card>
+
+    <nb-card class="List of people">
+        <nb-card-body>
+
+            <nb-card *ngFor="let data of usersList; let i = index;">
+                <nb-card-body>
+                    <div class="row">
+                        <div class="col-md-1">
+                            <span>{{data.id}}</span>
+                        </div>
+                        <div class="col-md-2">
+                            <span *ngIf="!isEditMode">{{data.name}}</span>
+                            <input #name type="text" nbInput fullWidth fieldSize="small" [value]="data.name"
+                                (change)="editName(name.value)" *ngIf="isEditMode">
+                        </div>
+                        <div class="col-md-4">
+                            <span *ngIf="!isEditMode">{{data.email}}</span>
+                            <input #email type="text" nbInput fullWidth fieldSize="small" [value]="data.email" (change)="editEmail(email.value)"
+                                *ngIf="isEditMode">
+                        </div>
+                        <div class="col-md-1">
+                            <span *ngIf="!isEditMode">{{data.age}}</span>
+                            <input #age type="text" nbInput fullWidth fieldSize="small" [value]="data.age" (change)="editAge(age.value)"
+                                *ngIf="isEditMode">
+                        </div>
+                        <div class="col-md-2">
+                            <span *ngIf="!isEditMode">{{data.phone}}</span>
+                            <input #phone type="text" nbInput fullWidth fieldSize="small" [value]="data.phone" (change)="editPhone(phone.value)"
+                                *ngIf="isEditMode">
+                        </div>
+                        <div class="col-md-1">
+                            <nb-icon icon="edit-2" status="primary" (click)="edit(i)" *ngIf="!isEditMode"></nb-icon>
+                            <nb-icon icon="edit" (click)="update(i)" *ngIf="isEditMode"></nb-icon>
+                        </div>
+                        <div class="col-md-1">
+                            <nb-icon icon="trash-2" status="primary" (click)="delete(i)"
+                                [ngStyle]="{'cursor':'pointer'}"></nb-icon>
+                        </div>
+                    </div>
+                </nb-card-body>
+            </nb-card>
+
+        </nb-card-body>
+    </nb-card>
+
+</nb-card-body>

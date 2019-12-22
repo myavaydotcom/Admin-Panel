@@ -1,0 +1,58 @@
+<nb-card-body>
+   <span *ngIf="isCountryAvailable">
+    <nb-card>
+        <nb-card-body>
+            <div class="row">
+                <div class="col-md-3">
+                    <nb-select #country placeholder="Country" filled status="info" [(selected)]="selectedCountry" required>
+                        <nb-option [value]="countryname.country" *ngFor="let countryname of countryList">
+                            {{countryname.country}}</nb-option>
+                    </nb-select>
+                </div>
+                <div class="col-md-3">
+                    <input type="text" nbInput fullWidth shape="round" placeholder="Enter City Name...." [(ngModel)]="cityname" required>
+                </div>
+                <div class="col-md-3">
+                    <input type="number" nbInput fullWidth shape="round" placeholder="Enter Pin code" [(ngModel)]="pincode" required>
+                </div>
+                <div class="col-md-3">
+                    <button type="submit" class="btn btn-primary" (click)="add()">Add</button>
+                </div>
+            </div>
+        </nb-card-body>
+    </nb-card>
+
+    <nb-card>
+        <nb-card-body>
+
+            <nb-card *ngFor="let c of cityList;let i = index;">
+                <nb-card-body>
+                    <div class="row">
+                        <div class="col-md-4">
+                           {{c.id}}. {{c.country}}
+                        </div>
+                        <div class="col-md-4">
+                            {{c.name}}
+                        </div>
+                        <div class="col-md-2">
+                            {{c.pincode}}
+                        </div>
+                        <div class="col-md-1">
+                            <nb-icon icon="edit-2" status="primary"></nb-icon>
+                        </div>
+                        <div class="col-md-1">
+                            <nb-icon icon="trash-2" status="primary" (click)="delete(i)" [ngStyle]="{'cursor':'pointer'}"></nb-icon>
+                        </div>
+                    </div>
+                </nb-card-body>
+            </nb-card>
+           
+        </nb-card-body>
+    </nb-card>
+</span>
+  <nb-card *ngIf="!isCountryAvailable">
+      <nb-card-body>
+           <p>Please select at Least one Country...</p>
+      </nb-card-body>
+  </nb-card>
+</nb-card-body>
